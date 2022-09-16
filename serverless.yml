@@ -10,7 +10,7 @@ provider:
   region: eu-west-1
   environment:
     CURRENT_ENV: ${self:provider.stage}
-    TENNIS_PLAYER_API_URL: ${ssm:/${self:service}/${self:provider.stage}-salesforce-recordtype-url}
+    TENNIS_PLAYER_API_URL: ${ssm:/${self:service}/${self:provider.stage}-tennis-api-url}
     LOG_LEVEL: ${self:custom.logLevel.${self:provider.stage},'ALL'}
   stackName: ${self:provider.stage}-${self:service}-sls-stack
   stackTags:

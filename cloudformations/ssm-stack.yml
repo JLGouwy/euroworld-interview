@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata:
+  License: "Apache-2.0"
+Description: "Create SSM Parameters for classified service"
+Parameters:
+  Environment:
+    Type: "String"
+    Default: "dev"
+    AllowedValues:
+      - "dev"
+      - "test"
+      - "prod"
+    ConstraintDescription: "Values can only be dev, test or prod"
+    Description: "The environment where the stack will be deployed. The environment value will be used to prefix all the different resources of the stack. Defaults to dev."
+  tennisServiceUrlParam:
+    Type: "String"
+    Default: "https://example.github.io/file.json"
+    Description: "Tennis service endpoint"
+Resources:
+  MediaServiceUrl:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: !Sub "/euroworld-interview/${Environment}-tennis-api-url"
+      Type: "String"
+      Value: !Sub ${tennisServiceUrlParam}
+      Description: "Tennis service endpoint"
+  
