@@ -1,0 +1,37 @@
+{
+  "name": "euroworld-interview",
+  "version": "1.0.0",
+  "sideEffects": false,
+  "description": "",
+  "scripts": {
+    "start": "sls offline start --stage local --noPrependStageInUrl --noAuth",
+    "lint": "eslint --fix \"src/**/*.js\"",
+    "serverless:dev": "npx serverless deploy --aws-profile jlgouwy --stage dev",
+    "serverless:test": "npx serverless deploy --aws-profile jlgouwy --stage test",
+    "serverless:prod": "npx serverless deploy --aws-profile jlgouwy --stage prod",
+    "prepare": "husky install",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.145.0",
+    "@aws-sdk/client-s3": "3.145.0",
+    "@aws-sdk/client-sns": "^3.163.0",
+    "@aws-sdk/lib-dynamodb": "^3.145.0",
+    "@aws-sdk/node-http-handler": "^3.127.0",
+    "@aws-sdk/util-dynamodb": "^3.145.0",
+    "axios": "^0.27.2",
+    "http-status-codes": "^2.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.14.54",
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "husky": "^8.0.1",
+    "jest": "^29.0.3",
+    "msw": "^0.47.3",
+    "serverless": "3.21.0",
+    "serverless-esbuild": "1.32.5",
+    "vitest": "^0.21.1"
+  }
+}

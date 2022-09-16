@@ -1,0 +1,48 @@
+service: euroworld-interview
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage, 'local'}
+  region: eu-west-1
+  environment:
+    CURRENT_ENV: ${self:provider.stage}
+    TENNIS_PLAYER_API_URL: ${ssm:/${self:service}/${self:provider.stage}-salesforce-recordtype-url}
+    LOG_LEVEL: ${self:custom.logLevel.${self:provider.stage},'ALL'}
+  stackName: ${self:provider.stage}-${self:service}-sls-stack
+  stackTags:
+    Service: ${self:service}
+    Application: immoweb
+    iwb:environment: ${self:provider.stage}
+
+custom:
+  version: 1
+  esbuild:
+    bundle: true
+    minify: ${self:custom.minify.${self:provider.stage}, false}
+  serverless-offline-ssm-provider:
+    file: .ssm-local
+  minify:
+    dev: false
+    test: false
+    prod: true
+  logLevel: # One of : ALL, TRACE, DEBUG, INFO, WARN, ERROR, OFF
+    sandbox: trace
+    dev: trace
+    test: info
+    prod: error
+
+functions:
+  getPlayers:
+    handler: src/handlers/get-players.handler
+    name: ${self:provider.stage}-${self:service}-getPlayers
+
+  getPlayerById:
+    handler: src/handlers/get-player-by-id.handler
+    name: ${self:provider.stage}-${self:service}-getPlayerById
+
+plugins:
+  - serverless-esbuild
