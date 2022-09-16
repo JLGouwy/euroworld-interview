@@ -39,10 +39,20 @@ functions:
   getPlayers:
     handler: src/handlers/get-players.handler
     name: ${self:provider.stage}-${self:service}-getPlayers
+    events:
+      - http:
+          path: /${self:custom.version}/players
+          method: get
+          cors: true
 
   getPlayerById:
     handler: src/handlers/get-player-by-id.handler
     name: ${self:provider.stage}-${self:service}-getPlayerById
+    events:
+      - http:
+          path: /${self:custom.version}/players/{playerId}
+          method: get
+          cors: true
 
 plugins:
   - serverless-esbuild

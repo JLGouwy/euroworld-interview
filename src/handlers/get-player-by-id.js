@@ -8,7 +8,7 @@ export const handler = async (event, context) => {
 
   try {
     const { playerId } = event.pathParameters;
-    const player = await getPlayerById(playerId);
+    const player = await getPlayerById(parseInt(playerId, 10));
 
     if (!player) {
       throw new NotFound(playerId);

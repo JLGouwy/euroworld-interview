@@ -31,19 +31,19 @@ describe('Handler - Get Players', () => {
 
     const requestEvent = {
       pathParameters: {
-        playerId: 52,
+        playerId: '52', // pathParameters are stringified through api gateway event.
       },
     };
     const response = await handler(requestEvent);
 
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.body)).toEqual(mockPlayer);
+    expect(JSON.parse(response.body)).toEqual(mockPlayer[0]);
   });
 
   it('Should return a 404 not found when no player found', async () => {
     const requestEvent = {
       pathParameters: {
-        playerId: 56,
+        playerId: '56',
       },
     };
     const response = await handler(requestEvent);
@@ -58,7 +58,7 @@ describe('Handler - Get Players', () => {
     }));
     const requestEvent = {
       pathParameters: {
-        playerId: 56,
+        playerId: '56',
       },
     };
     const response = await handler(requestEvent);

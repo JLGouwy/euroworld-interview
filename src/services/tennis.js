@@ -21,5 +21,5 @@ export const getPlayerById = async (id) => {
 
   const playerFound = players.filter((player) => player.id === id);
 
-  return playerFound.length !== 0 ? playerFound : null;
+  return playerFound.length !== 0 ? playerFound[0] : null;
 };
