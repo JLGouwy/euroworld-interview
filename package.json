@@ -4,7 +4,6 @@
   "sideEffects": false,
   "description": "",
   "scripts": {
-    "start": "sls offline start --stage local --noPrependStageInUrl --noAuth",
     "lint": "eslint --fix \"src/**/*.js\"",
     "serverless:dev": "npx serverless deploy --aws-profile jlgouwy --stage dev",
     "serverless:test": "npx serverless deploy --aws-profile jlgouwy --stage test",
