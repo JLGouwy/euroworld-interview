@@ -4,6 +4,7 @@
   "sideEffects": false,
   "description": "",
   "scripts": {
+    "start": "sls offline start --stage local --noPrependStageInUrl --noAuth",
     "lint": "eslint --fix \"src/**/*.js\"",
     "serverless:dev": "npx serverless deploy --aws-profile jlgouwy --stage dev",
     "serverless:test": "npx serverless deploy --aws-profile jlgouwy --stage test",
@@ -31,6 +32,8 @@
     "msw": "^0.47.3",
     "serverless": "3.21.0",
     "serverless-esbuild": "1.32.5",
+    "serverless-offline": "^10.1.0",
+    "serverless-offline-ssm": "^6.2.0",
     "vitest": "^0.21.1"
   }
 }

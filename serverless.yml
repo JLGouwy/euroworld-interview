@@ -23,8 +23,9 @@ custom:
   esbuild:
     bundle: true
     minify: ${self:custom.minify.${self:provider.stage}, false}
-  serverless-offline-ssm-provider:
-    file: .ssm-local
+  serverless-offline-ssm:
+    stages:
+      - local
   minify:
     dev: false
     test: false
@@ -55,4 +56,6 @@ functions:
           cors: true
 
 plugins:
+  - serverless-offline-ssm
+  - serverless-offline
   - serverless-esbuild

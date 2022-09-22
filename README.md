@@ -4,8 +4,27 @@
 Euroworld is a little microservice about tennis player.
 The goal is just fetching data player from a specific endpoint.
 
-## test
-The command to run : 
+
+## Locally
+### pre-requirements
+1. install deps
+```
+npm i
+```
+
+2. Create .env file at the root of the project, with the following content : 
+```
+/euroworld-interview/local-tennis-api-url=VALUE
+```
+Replace VALUE by yours.
+
+3. Then run locally 
+```
+npm run start
+```
+
+### test
+The command to run the unit tests : 
 ```
 npm run test
 ```
